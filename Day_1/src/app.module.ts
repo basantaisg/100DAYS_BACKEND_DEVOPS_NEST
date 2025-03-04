@@ -1,15 +1,21 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver } from '@nestjs/apollo'; // Corrected import
+import { ApolloDriver } from '@nestjs/apollo';
+import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
-    // GraphQL setup using ApolloDriver
     GraphQLModule.forRoot({
-      driver: ApolloDriver, // Set Apollo as the GraphQL driver
-      autoSchemaFile: true, // Auto-generate the GraphQL schema
-      playground: true, // Enable GraphQL Playground for testing
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+      playground: true,
+      cors: {
+        origin: '*', // Allow all origins for development (not recommended for production)
+        credentials: true,
+      },
+      csrfPrevention: false, // Disable CSRF prevention
     }),
   ],
+  providers: [AppResolver],
 })
 export class AppModule {}
