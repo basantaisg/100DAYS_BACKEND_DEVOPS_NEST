@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "/Day_0/dist/index.js"
+    "start": "/dist/index.js"
   },
   "keywords": [],
   "author": "",
