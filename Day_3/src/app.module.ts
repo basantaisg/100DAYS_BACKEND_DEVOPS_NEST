@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { LoggerMiddleware } from './middlewares/logger/logger.middleware';
 import { ConfigModule } from '@nestjs/config';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [UsersModule, ConfigModule.forRoot()], // this automatically loads env!
+  imports: [UsersModule, ConfigModule.forRoot(), PrismaModule], // this automatically loads env!
   controllers: [AppController],
   providers: [AppService],
 })
