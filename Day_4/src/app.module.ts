@@ -3,9 +3,19 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/modules/users.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 @Module({
-  imports: [UsersModule, PrismaModule],
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), '/src/schema.gql'),
+    }),
+    UsersModule,
+    PrismaModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
