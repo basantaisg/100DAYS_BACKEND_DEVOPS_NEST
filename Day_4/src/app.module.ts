@@ -6,6 +6,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { AuthModule } from './users/auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { join } from 'path';
     }),
     UsersModule,
     PrismaModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
