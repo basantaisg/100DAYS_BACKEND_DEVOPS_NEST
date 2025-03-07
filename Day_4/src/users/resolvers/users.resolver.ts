@@ -18,7 +18,7 @@ export class UsersResolver {
   }
 
   @Query(() => User, { nullable: true })
-  async getUserById(@Args('íd') id: string) {
+  async getUserById(@Args('id') id: string) {
     return this.usersService.getUserById(id);
   }
 
