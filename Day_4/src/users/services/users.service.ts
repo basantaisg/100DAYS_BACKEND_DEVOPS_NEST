@@ -15,14 +15,13 @@ export class UsersService {
 
   async createUser(data: CreateUserInput) {
     const parsedData = CreateUserSchema.parse(data);
-    const { password } = data;
 
     // hashing the password!
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(data.password, 10);
 
-    data.password = hashedPassword;
-
-    return this.prisma.user.create({ data: parsedData });
+    return this.prisma.user.create({
+      data: { ...parsedData, password: hashedPassword },
+    });
   }
 
   async getUsers() {
