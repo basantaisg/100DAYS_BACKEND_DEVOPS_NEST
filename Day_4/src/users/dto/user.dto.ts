@@ -6,7 +6,7 @@ export const CreateUserSchema = z.object({
   email: z.string().email(),
   age: z.number().int().positive(),
   username: z.string().min(3),
-  password: z.string().min(3).max(4),
+  password: z.string().min(3).max(16),
 });
 
 @InputType()
@@ -34,7 +34,7 @@ export const UpdateUserSchema = z.object({
   email: z.string().email().optional(),
   age: z.number().int().positive().optional(),
   username: z.string().min(3).optional(),
-  password: z.string().min(3).max(4).optional(),
+  password: z.string().min(3).max(16).optional(),
 });
 
 // For gql!
