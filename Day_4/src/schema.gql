@@ -7,6 +7,8 @@ type User {
   name: String!
   email: String!
   age: Int!
+  username: String!
+  password: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -18,23 +20,27 @@ scalar DateTime
 
 type Query {
   getUsers: [User!]!
-  getUserById(id: String!): User
+  getUserById(id: Float!): User
 }
 
 type Mutation {
   createUser(data: CreateUserInput!): User!
-  updateUser(id: String!, data: UpdateUserInput!): User!
-  deleteUser(id: String!): User!
+  updateUser(id: Float!, data: UpdateUserInput!): User!
+  deleteUser(id: Float!): User!
 }
 
 input CreateUserInput {
   name: String!
   email: String!
   age: Int!
+  username: String!
+  password: String!
 }
 
 input UpdateUserInput {
   name: String
   email: String
   age: Int
+  username: String
+  password: String
 }
