@@ -18,20 +18,20 @@ export class UsersResolver {
   }
 
   @Query(() => User, { nullable: true })
-  async getUserById(@Args('id') id: string) {
+  async getUserById(@Args('id') id: number) {
     return this.usersService.getUserById(id);
   }
 
   @Mutation(() => User)
   async updateUser(
-    @Args('id') id: string,
+    @Args('id') id: number,
     @Args('data') data: UpdateUserInput,
   ) {
     return this.usersService.updatedUser(id, data);
   }
 
   @Mutation(() => User)
-  async deleteUser(@Args('id') id: string) {
+  async deleteUser(@Args('id') id: number) {
     return this.usersService.deleteUser(id);
   }
 }

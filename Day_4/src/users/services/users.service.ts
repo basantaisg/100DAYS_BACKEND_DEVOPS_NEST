@@ -21,16 +21,16 @@ export class UsersService {
     return this.prisma.user.findMany();
   }
 
-  async getUserById(id: string) {
+  async getUserById(id: number) {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
-  async updatedUser(id: string, data: UpdateUserInput) {
+  async updatedUser(id: number, data: UpdateUserInput) {
     const parsedData = UpdateUserSchema.parse(data);
     return this.prisma.user.update({ where: { id }, data: parsedData });
   }
 
-  async deleteUser(id: string) {
+  async deleteUser(id: number) {
     return this.prisma.user.delete({ where: { id } });
   }
 }
