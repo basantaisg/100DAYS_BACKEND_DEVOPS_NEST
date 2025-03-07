@@ -7,12 +7,20 @@ import {
   UpdateUserSchema,
 } from '../dto/user.dto';
 
+import * as bcrypt from 'bcryptjs';
+
 @Injectable()
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createUser(data: CreateUserInput) {
     const parsedData = CreateUserSchema.parse(data);
+    const { password } = data;
+
+    // hashing the password!
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    data.password = hashedPassword;
 
     return this.prisma.user.create({ data: parsedData });
   }
