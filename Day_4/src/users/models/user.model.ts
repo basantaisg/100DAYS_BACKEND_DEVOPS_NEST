@@ -15,6 +15,12 @@ export class User {
   age: number;
 
   @Field()
+  username: string;
+
+  @Field()
+  password: string;
+
+  @Field()
   createdAt: Date;
 
   @Field()
