@@ -44,3 +44,16 @@ input UpdateUserInput {
   username: String
   password: String
 }
+
+type Mutation {
+  login(data: LoginInput): AuthPayload
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+type AuthPayload {
+  access_token: String!
+}
